@@ -67,8 +67,8 @@ public enum LottoPrize {
     private static final Map<Integer, LottoPrize> base = Map.of(
             LottoPrize.FIRST_PRIZE.sameNumberCount, LottoPrize.FIRST_PRIZE,
             LottoPrize.THIRD_PRIZE.sameNumberCount, LottoPrize.THIRD_PRIZE,
-            LottoPrize.FOURTH_PRIZE.getAmount(), LottoPrize.FOURTH_PRIZE,
-            LottoPrize.FIFTH_PRIZE.getAmount(), LottoPrize.FIFTH_PRIZE
+            LottoPrize.FOURTH_PRIZE.sameNumberCount, LottoPrize.FOURTH_PRIZE,
+            LottoPrize.FIFTH_PRIZE.sameNumberCount, LottoPrize.FIFTH_PRIZE
     );
 
 }

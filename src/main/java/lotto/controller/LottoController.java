@@ -15,23 +15,28 @@ public class LottoController {
 
         LottoSeller lottoSeller = new LottoSeller();
 
-        //구매 금액 입력
-        int purchaseAmount = InputView.readPurchaseAmount();
-        List<Lotto> purchasedLottos = lottoSeller.purchaseLotto(purchaseAmount);
-        OutputView.printPurchasedLottos(purchasedLottos);
+        try {
+            //구매 금액 입력
+            int purchaseAmount = InputView.readPurchaseAmount();
+            List<Lotto> purchasedLottos = lottoSeller.purchaseLotto(purchaseAmount);
+            OutputView.printPurchasedLottos(purchasedLottos);
 
 
-        // 당첨 번호 입력
-        List<Integer> winningNumbers = InputView.readLottoNumbers();
+            // 당첨 번호 입력
+            List<Integer> winningNumbers = InputView.readLottoNumbers();
 
-        // 보너스 번호 입력
-        int bonusNumber = InputView.readBonusNumber();
+            // 보너스 번호 입력
+            int bonusNumber = InputView.readBonusNumber();
 
-        LottoMachine lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
+            LottoMachine lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
 
-        LottoResult lottoResult = lottoMachine.check(purchasedLottos);
+            LottoResult lottoResult = lottoMachine.check(purchasedLottos);
 
-        // 결과 출력
-        OutputView.printWinningResult(lottoResult);
+            // 결과 출력
+            OutputView.printWinningResult(lottoResult);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }

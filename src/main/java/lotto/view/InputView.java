@@ -21,7 +21,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 정수를 입력해주세요. input=%s".formatted(input),e.getCause());
+            throw new IllegalArgumentException("[ERROR] 정수를 입력해주세요. input=%s".formatted(input));
         }
     }
 
