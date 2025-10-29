@@ -27,6 +27,8 @@ public class LottoResult {
         this.profitRate = calculateProfitRatio();
     }
 
+
+
     public int getPrizeCount(LottoPrize prize) {
         return winningResult.getOrDefault(prize, 0);
     }
@@ -72,7 +74,6 @@ public class LottoResult {
 
         return value * 100;
     }
-
 
 
 
