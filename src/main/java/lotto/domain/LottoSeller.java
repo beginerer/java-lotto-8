@@ -22,7 +22,7 @@ public class LottoSeller {
 
     public List<Lotto> purchaseLotto(int purchaseAmount) {
         if(purchaseAmount <= 0 )
-            throw new IllegalArgumentException("[ERROR] 구매금액은 양수여야 합니다. value=%s".
+            throw new IllegalArgumentException("[ERROR] 구매금액은 양수여야 합니다. 구입금액=%d".
                     formatted(purchaseAmount));
 
         if(purchaseAmount % LOTTO_PRICE != 0 )

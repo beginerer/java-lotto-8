@@ -27,20 +27,20 @@ public class OutputView {
             int amount = prize.getAmount();
 
 
-            String moneyFormated = String.format("%,d원", amount);
+            String moneyFormated = String.format("(%,d원)", amount);
 
             String format = resolvePrizeOutput(prize, sameCount, moneyFormated, lottoResult.getPrizeCount(prize));
 
             System.out.println(format);
         }
 
-        System.out.printf("총 수익률은 %.2f%%입니다.", lottoResult.getProfitRate());
+        System.out.printf("총 수익률은 %.1f%%입니다.", lottoResult.getProfitRate());
     }
 
     private static String resolvePrizeOutput(LottoPrize prize, int sameCount, String moneyFormated, int prizeCount) {
         if(prize == LottoPrize.SECOND_PRIZE) {
             return String.format("%d개 일치, 보너스 볼 일치 %s - %d개",sameCount, moneyFormated, prizeCount);
         }
-        return String.format("%d개 일치, %s - %d개",sameCount, moneyFormated, prizeCount);
+        return String.format("%d개 일치 %s - %d개",sameCount, moneyFormated, prizeCount);
     }
 }

@@ -21,10 +21,10 @@ public class LottoResult {
         validateLottoPrice(lottoPrice);
 
         this.winningResult = buildWinningResult(input);
+        this.lottoPrice = lottoPrice;
         this.purchasedCount = purchasedCount;
         this.totalPrizeAmount = calculateTotalPrizeAmount();
         this.profitRate = calculateProfitRatio();
-        this.lottoPrice = lottoPrice;
     }
 
     public int getPrizeCount(LottoPrize prize) {
@@ -70,7 +70,7 @@ public class LottoResult {
 
         double value = ((double) totalPrizeAmount)/ purchaseAmount;
 
-        return Math.round(value * 100) / 100.0;
+        return value * 100;
     }
 
 
