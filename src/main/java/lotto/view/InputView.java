@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,12 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 입력이 null 입니다.");
 
         try {
-            return Arrays.stream(input.split(DELIMITER)).map(Integer::parseInt).toList();
+            List<Integer> winningNumbers = Arrays.stream(input.split(DELIMITER)).map(Integer::parseInt).toList();
+
+            if(winningNumbers.size() != Lotto.LOTTO_SIZE)
+                throw new IllegalArgumentException("[ERROR] 로또 번호개수는 6개여야합니다. input=%s".formatted(winningNumbers));
+
+            return winningNumbers;
         }catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 정수를 입력해주세요. input=%s".formatted(input));
         }
@@ -56,7 +62,4 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 정수를 입력해주세요. input=%s".formatted(input));
         }
     }
-
-
-
 }

@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 import java.util.stream.IntStream;
 
+
 public class LottoSeller {
 
     public static final int LOTTO_PRICE = 1000;
@@ -37,7 +38,7 @@ public class LottoSeller {
 
     private List<Lotto> publish(int count) {
         if(count <= 0)
-            throw new IllegalArgumentException("[ERROR] 발행 횟수는 0보다 커야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 발행 횟수는 양수여야 합니다.");
 
         return IntStream.range(0, count).mapToObj(i -> numberGenerator.generate()).
                 map(Lotto::new).toList();

@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.EnumMap;
 
 public class LottoResult {
+
     private final EnumMap<LottoPrize, Integer> winningResult;
 
     private final long totalPrizeAmount;
@@ -10,6 +11,8 @@ public class LottoResult {
     private final double profitRate;
 
     private final int purchasedCount;
+
+    private final int purchaseAmount;
 
     private final int lottoPrice;
 
@@ -23,6 +26,7 @@ public class LottoResult {
         this.winningResult = buildWinningResult(input);
         this.lottoPrice = lottoPrice;
         this.purchasedCount = purchasedCount;
+        this.purchaseAmount = purchasedCount * lottoPrice;
         this.totalPrizeAmount = calculateTotalPrizeAmount();
         this.profitRate = calculateProfitRatio();
     }
@@ -32,6 +36,7 @@ public class LottoResult {
     public int getPrizeCount(LottoPrize prize) {
         return winningResult.getOrDefault(prize, 0);
     }
+
 
 
     public long getTotalPrizeAmount() {
@@ -45,6 +50,11 @@ public class LottoResult {
     public int getPurchasedCount() {
         return purchasedCount;
     }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
 
     public int getLottoPrice() {
         return lottoPrice;
@@ -70,7 +80,7 @@ public class LottoResult {
         long purchaseAmount = (long) lottoPrice * purchasedCount;
 
 
-        double value = ((double) totalPrizeAmount)/ purchaseAmount;
+        double value = ((double) totalPrizeAmount) / purchaseAmount;
 
         return value * 100;
     }
@@ -106,13 +116,13 @@ public class LottoResult {
 
     private void validatePurchaseCount(int purchasedCount) {
         if (purchasedCount <= 0 )
-            throw new IllegalArgumentException("[ERROR] 구매 횟수는 0보다 커야 합니다. value=%d".
+            throw new IllegalArgumentException("[ERROR] 구매 횟수는 양수여야 합니다. 구매 횟수=%d".
                     formatted(purchasedCount));
     }
 
     private void validateLottoPrice(int lottoPrice) {
         if(lottoPrice <= 0)
-            throw new IllegalArgumentException("[ERROR] 로또 가격은 0보다 커야 합니다. value=%s".
+            throw new IllegalArgumentException("[ERROR] 로또 가격은 양수여야 합니다. 로또가격=%s".
                     formatted(lottoPrice));
     }
 }

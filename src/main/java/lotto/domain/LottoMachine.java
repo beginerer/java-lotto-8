@@ -12,6 +12,11 @@ public class LottoMachine {
     private final int bonusNumber;
 
 
+    public LottoMachine(Lotto winningLotto, int bonusNumber) {
+        this.winningLotto = winningLotto;
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = bonusNumber;
+    }
 
     public LottoMachine(List<Integer> lottoNumbers, int bonusNumber) {
         this.winningLotto = new Lotto(lottoNumbers);
@@ -49,7 +54,7 @@ public class LottoMachine {
 
     private void validateBonusNumber(int bonusNumber) {
         if(bonusNumber > Lotto.MAX_NUMBER || bonusNumber < Lotto.MIN_NUMBER)
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 범위를 벗어났습니다. value=%d".formatted(bonusNumber));
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 범위를 벗어났습니다. bonusNumber=%d".formatted(bonusNumber));
 
         if(winningLotto.hasNumber(bonusNumber))
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 로또 번호와 중복됩니다. %s, bonusNumber=%d".formatted(winningLotto, bonusNumber));

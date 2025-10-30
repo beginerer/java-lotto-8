@@ -19,23 +19,20 @@ public class LottoController {
 
     public void run() {
 
-
         //구매 금액 입력
         List<Lotto> purchasedLottos = purchaseLottos();
 
         // 당첨 번호 입력
-        List<Integer> winningNumbers = inputWinningNumbers();
+        Lotto winningLotto = inputWinningNumbers();
 
-        // 보너스 번호 입력
-        int bonusNumber = inputBonusNumber();
+        // 보너스 번호 입력 & 로또 머신 생성
+        LottoMachine lottoMachine = inputBonusNumberAndProduceLottoMachine(winningLotto);
 
-        LottoMachine lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
 
         LottoResult lottoResult = lottoMachine.check(purchasedLottos);
 
         // 결과 출력
         OutputView.printWinningResult(lottoResult);
-
     }
 
     private List<Lotto> purchaseLottos() {
@@ -51,21 +48,21 @@ public class LottoController {
             }
         }
     }
-    private List<Integer> inputWinningNumbers() {
+    private Lotto inputWinningNumbers() {
         while (true) {
             try {
                 List<Integer> winningNumbers = InputView.readLottoNumbers();
-                return winningNumbers;
+                return new Lotto(winningNumbers);
             }catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
-    private int inputBonusNumber() {
+    private LottoMachine inputBonusNumberAndProduceLottoMachine(Lotto winingLotto) {
         while(true) {
             try {
                 int bonusNumber = InputView.readBonusNumber();
-                return bonusNumber;
+                return new LottoMachine(winingLotto, bonusNumber);
             }catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
