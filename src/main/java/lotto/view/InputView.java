@@ -6,7 +6,6 @@ import lotto.domain.Lotto;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class InputView {
 
     private static final String DELIMITER = ",";
