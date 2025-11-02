@@ -33,44 +33,128 @@ class LottoMachineTest {
     @Test
     @DisplayName("FIRST_PRIZE test")
     public void test() {
-        LottoPrize prize = lottoMachine.check(FIRST_PRIZE);
 
+        LottoPrize prize = lottoMachine.check(FIRST_PRIZE);
+        LottoResult result = lottoMachine.check(List.of(FIRST_PRIZE));
+
+        int purchaseAmount = LottoSeller.LOTTO_PRICE;
+        long expectPrizeAmount = LottoPrize.FIRST_PRIZE.getAmount();
+        double profitRatio = ((double) expectPrizeAmount / purchaseAmount) * 100;
+
+        // Prize
         Assertions.assertThat(prize).isEqualTo(LottoPrize.FIRST_PRIZE);
+
+        // LottoResult
+        Assertions.assertThat(result.getPurchaseAmount()).isEqualTo(purchaseAmount);
+        Assertions.assertThat(result.getPurchasedCount()).isEqualTo(1);
+        Assertions.assertThat(result.getTotalPrizeAmount()).isEqualTo(LottoPrize.FIRST_PRIZE.getAmount());
+        Assertions.assertThat(result.getProfitRate()).isEqualTo(profitRatio);
+
     }
 
     @Test
     @DisplayName("SECOND_PRIZE test")
     public void test2() {
+
         LottoPrize prize = lottoMachine.check(SECOND_PRIZE);
+        LottoResult result = lottoMachine.check(List.of(SECOND_PRIZE));
+
+        int purchaseAmount = LottoSeller.LOTTO_PRICE;
+        long expectPrizeAmount = LottoPrize.SECOND_PRIZE.getAmount();
+        double profitRatio = ((double) expectPrizeAmount / purchaseAmount) * 100;
+
+
+        // Prize
         Assertions.assertThat(prize).isEqualTo(LottoPrize.SECOND_PRIZE);
+
+        // LottoResult
+        Assertions.assertThat(result.getPurchaseAmount()).isEqualTo(purchaseAmount);
+        Assertions.assertThat(result.getPurchasedCount()).isEqualTo(1);
+        Assertions.assertThat(result.getTotalPrizeAmount()).isEqualTo(LottoPrize.SECOND_PRIZE.getAmount());
+        Assertions.assertThat(result.getProfitRate()).isEqualTo(profitRatio);
     }
 
     @Test
     @DisplayName("THIRD_PRIZE test")
     public void test3() {
         LottoPrize prize = lottoMachine.check(THIRD_PRIZE);
+        LottoResult result = lottoMachine.check(List.of(THIRD_PRIZE));
+
+        int purchaseAmount = LottoSeller.LOTTO_PRICE;
+        long expectPrizeAmount = LottoPrize.THIRD_PRIZE.getAmount();
+        double profitRatio = ((double) expectPrizeAmount / purchaseAmount) * 100;
+
+        // Prize
         Assertions.assertThat(prize).isEqualTo(LottoPrize.THIRD_PRIZE);
+
+        // LottoResult
+        Assertions.assertThat(result.getPurchaseAmount()).isEqualTo(purchaseAmount);
+        Assertions.assertThat(result.getPurchasedCount()).isEqualTo(1);
+        Assertions.assertThat(result.getTotalPrizeAmount()).isEqualTo(LottoPrize.THIRD_PRIZE.getAmount());
+        Assertions.assertThat(result.getProfitRate()).isEqualTo(profitRatio);
     }
 
     @Test
     @DisplayName("FOURTH_PRIZE")
     public void test4() {
         LottoPrize prize = lottoMachine.check(FOURTH_PRIZE);
+        LottoResult result = lottoMachine.check(List.of(FOURTH_PRIZE));
+
+        int purchaseAmount = LottoSeller.LOTTO_PRICE;
+        long expectPrizeAmount = LottoPrize.FOURTH_PRIZE.getAmount();
+        double profitRatio = ((double) expectPrizeAmount / purchaseAmount) * 100;
+
+
+        // Prize
         Assertions.assertThat(prize).isEqualTo(LottoPrize.FOURTH_PRIZE);
+
+        // LottoResult
+        Assertions.assertThat(result.getPurchaseAmount()).isEqualTo(purchaseAmount);
+        Assertions.assertThat(result.getPurchasedCount()).isEqualTo(1);
+        Assertions.assertThat(result.getTotalPrizeAmount()).isEqualTo(LottoPrize.FOURTH_PRIZE.getAmount());
+        Assertions.assertThat(result.getProfitRate()).isEqualTo(profitRatio);
     }
 
     @Test
     @DisplayName("FIFTH_PRIZE")
     public void test5() {
         LottoPrize prize = lottoMachine.check(FIFTH_PRIZE);
+        LottoResult result = lottoMachine.check(List.of(FIFTH_PRIZE));
+
+        int purchaseAmount = LottoSeller.LOTTO_PRICE;
+        long expectPrizeAmount = LottoPrize.FIFTH_PRIZE.getAmount();
+        double profitRatio = ((double) expectPrizeAmount / purchaseAmount) * 100;
+
+
+        // Prize
         Assertions.assertThat(prize).isEqualTo(LottoPrize.FIFTH_PRIZE);
+
+        // LottoResult
+        Assertions.assertThat(result.getPurchaseAmount()).isEqualTo(purchaseAmount);
+        Assertions.assertThat(result.getPurchasedCount()).isEqualTo(1);
+        Assertions.assertThat(result.getTotalPrizeAmount()).isEqualTo(LottoPrize.FIFTH_PRIZE.getAmount());
+        Assertions.assertThat(result.getProfitRate()).isEqualTo(profitRatio);
     }
 
     @Test
     @DisplayName("NONE_PRIZE")
     public void test6() {
         LottoPrize prize = lottoMachine.check(NONE_PRIZE);
+        LottoResult result = lottoMachine.check(List.of(NONE_PRIZE));
+
+        int purchaseAmount = LottoSeller.LOTTO_PRICE;
+        long expectPrizeAmount = LottoPrize.NONE.getAmount();
+        double profitRatio = ((double) expectPrizeAmount / purchaseAmount) * 100;
+
+
+        // Prize
         Assertions.assertThat(prize).isEqualTo(LottoPrize.NONE);
+
+        // LottoResult
+        Assertions.assertThat(result.getPurchaseAmount()).isEqualTo(purchaseAmount);
+        Assertions.assertThat(result.getPurchasedCount()).isEqualTo(1);
+        Assertions.assertThat(result.getTotalPrizeAmount()).isEqualTo(LottoPrize.NONE.getAmount());
+        Assertions.assertThat(result.getProfitRate()).isEqualTo(profitRatio);
     }
 
     @Test
