@@ -37,7 +37,8 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 입력이 null 입니다.");
 
         try {
-            List<Integer> winningNumbers = Arrays.stream(input.split(DELIMITER)).map(Integer::parseInt).toList();
+            List<Integer> winningNumbers = Arrays.stream(input.split(DELIMITER)).map(String::trim).
+                    map(Integer::parseInt).toList();
 
             if(winningNumbers.size() != Lotto.LOTTO_SIZE)
                 throw new IllegalArgumentException("[ERROR] 로또 번호개수는 6개여야합니다. input=%s".formatted(winningNumbers));
